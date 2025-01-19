@@ -30,9 +30,34 @@
     UINavigationController *videoTableNavigationController = [[UINavigationController alloc] initWithRootViewController:videoTableVC];
     UINavigationController *userHomeNavigationController = [[UINavigationController alloc] initWithRootViewController:userHomeVC];
     
-    UIFont *customFont = [UIFont fontWithName:@"Arial-BoldMT" size:14.0]; // 自定义字体和大小
-    NSDictionary *attributes = @{NSFontAttributeName: customFont};
-    [[UITabBarItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
+    NSDictionary *normalAttributes = @{
+        NSFontAttributeName: [UIFont systemFontOfSize:20.0 weight:UIFontWeightRegular],
+        NSForegroundColorAttributeName: [UIColor grayColor]
+    };
+    [[UITabBarItem appearance] setTitleTextAttributes:normalAttributes forState:UIControlStateNormal];
+
+    NSDictionary *selectedAttributes = @{
+        NSFontAttributeName: [UIFont systemFontOfSize:20.0 weight:UIFontWeightBold],
+        NSForegroundColorAttributeName: [UIColor whiteColor]
+    };
+    
+    if (@available(iOS 15.0, *)) {
+        UITabBarAppearance *appearance = [[UITabBarAppearance alloc] init];
+        UITabBarItemAppearance *itemAppearance = [[UITabBarItemAppearance alloc] init];
+        [appearance configureWithOpaqueBackground]; // 设置为不透明
+        appearance.backgroundColor = [UIColor blackColor]; // 设置背景颜色
+        //自定义字体
+        itemAppearance.normal.titleTextAttributes = normalAttributes;
+        itemAppearance.selected.titleTextAttributes = selectedAttributes;
+        appearance.stackedLayoutAppearance = itemAppearance;
+        self.tabBar.standardAppearance = appearance;
+        self.tabBar.scrollEdgeAppearance = appearance;
+    } else {
+        [[UITabBarItem appearance] setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
+        self.tabBar.barTintColor = [UIColor blueColor];
+        self.tabBar.translucent = NO;
+    }
     
     [self setViewControllers:@[videoTableNavigationController, userHomeNavigationController]];
 }

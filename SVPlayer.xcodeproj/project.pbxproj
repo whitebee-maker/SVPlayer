@@ -14,6 +14,8 @@
 		5680B8E82D364812004B2513 /* SVTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5680B8E72D364812004B2513 /* SVTabBarViewController.m */; };
 		5680B8EF2D364E91004B2513 /* UserHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5680B8EE2D364E91004B2513 /* UserHomeViewController.m */; };
 		5680B8F32D3650C9004B2513 /* VideoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5680B8F22D3650C9004B2513 /* VideoTableViewController.m */; };
+		AC3608882D3D429700CF2249 /* UserHomeCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3608872D3D429700CF2249 /* UserHomeCollectionLayout.m */; };
+		ACC1B2AE2D3D5DA400903D15 /* UserInfoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC1B2AD2D3D5DA400903D15 /* UserInfoHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,10 @@
 		5680B8EE2D364E91004B2513 /* UserHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHomeViewController.m; sourceTree = "<group>"; };
 		5680B8F12D3650C9004B2513 /* VideoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoTableViewController.h; sourceTree = "<group>"; };
 		5680B8F22D3650C9004B2513 /* VideoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewController.m; sourceTree = "<group>"; };
+		AC3608862D3D429700CF2249 /* UserHomeCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHomeCollectionLayout.h; sourceTree = "<group>"; };
+		AC3608872D3D429700CF2249 /* UserHomeCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHomeCollectionLayout.m; sourceTree = "<group>"; };
+		ACC1B2AC2D3D5DA400903D15 /* UserInfoHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoHeader.h; sourceTree = "<group>"; };
+		ACC1B2AD2D3D5DA400903D15 /* UserInfoHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,10 @@
 			children = (
 				5680B8ED2D364E91004B2513 /* UserHomeViewController.h */,
 				5680B8EE2D364E91004B2513 /* UserHomeViewController.m */,
+				AC3608862D3D429700CF2249 /* UserHomeCollectionLayout.h */,
+				AC3608872D3D429700CF2249 /* UserHomeCollectionLayout.m */,
+				ACC1B2AC2D3D5DA400903D15 /* UserInfoHeader.h */,
+				ACC1B2AD2D3D5DA400903D15 /* UserInfoHeader.m */,
 			);
 			path = UserHome;
 			sourceTree = "<group>";
@@ -174,6 +184,8 @@
 				5680B8E82D364812004B2513 /* SVTabBarViewController.m in Sources */,
 				5680B8F32D3650C9004B2513 /* VideoTableViewController.m in Sources */,
 				5680B8C82D36416E004B2513 /* AppDelegate.m in Sources */,
+				ACC1B2AE2D3D5DA400903D15 /* UserInfoHeader.m in Sources */,
+				AC3608882D3D429700CF2249 /* UserHomeCollectionLayout.m in Sources */,
 				5680B8EF2D364E91004B2513 /* UserHomeViewController.m in Sources */,
 				5680B8D92D364170004B2513 /* main.m in Sources */,
 			);

@@ -6,8 +6,12 @@
 //
 
 #import "UserHomeViewController.h"
+#import "UserHomeCollectionLayout.h"
+#import "UserInfoHeader.h"
 
 @interface UserHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+@property(nonatomic, strong) UICollectionView *collectionView;
 
 @end
 
@@ -15,12 +19,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initCollectionView];
+}
+
+- (void)initCollectionView {
+    UserHomeCollectionLayout *layout = [[UserHomeCollectionLayout alloc] init];
+    layout.minimumLineSpacing = 1;        // 行间距
+    layout.minimumInteritemSpacing = 0;   //列间距
+    _collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:layout];
+    _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    _collectionView.alwaysBounceVertical = YES;     // 垂直滚动反弹
+    _collectionView.showsVerticalScrollIndicator = NO; // 不显示滚动条
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    [_collectionView registerClass:[UserInfoHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UserInfoCell"];
+    [self.view addSubview:_collectionView];
 }
 
 // ================================================================================================
 # pragma mark - UICollectionViewDataSource Delegate
 // ================================================================================================
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 2;
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 0;

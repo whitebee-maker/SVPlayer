@@ -55,7 +55,7 @@
         self.tabBar.scrollEdgeAppearance = appearance;
     } else {
         [[UITabBarItem appearance] setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
-        self.tabBar.barTintColor = [UIColor blueColor];
+        self.tabBar.barTintColor = [UIColor blackColor];
         self.tabBar.translucent = NO;
     }
     

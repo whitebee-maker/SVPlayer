@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+static const NSInteger UserInfoHeaderAvatarTag = 0x01;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UserInfoHeader : UICollectionReusableView

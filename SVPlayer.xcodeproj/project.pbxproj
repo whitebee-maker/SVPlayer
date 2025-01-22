@@ -32,6 +32,7 @@
 		5680B8EE2D364E91004B2513 /* UserHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHomeViewController.m; sourceTree = "<group>"; };
 		5680B8F12D3650C9004B2513 /* VideoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoTableViewController.h; sourceTree = "<group>"; };
 		5680B8F22D3650C9004B2513 /* VideoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewController.m; sourceTree = "<group>"; };
+		5680B8F62D40E461004B2513 /* SVPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVPrefixHeader.pch; sourceTree = "<group>"; };
 		AC3608862D3D429700CF2249 /* UserHomeCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHomeCollectionLayout.h; sourceTree = "<group>"; };
 		AC3608872D3D429700CF2249 /* UserHomeCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHomeCollectionLayout.m; sourceTree = "<group>"; };
 		ACC1B2AC2D3D5DA400903D15 /* UserInfoHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoHeader.h; sourceTree = "<group>"; };
@@ -68,13 +69,14 @@
 		5680B8C52D36416E004B2513 /* SVPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				5680B8F42D40D0DA004B2513 /* Resource */,
 				5680B8DF2D36425C004B2513 /* Controller */,
 				5680B8C62D36416E004B2513 /* AppDelegate.h */,
 				5680B8C72D36416E004B2513 /* AppDelegate.m */,
-				5680B8D22D364170004B2513 /* Assets.xcassets */,
 				5680B8D42D364170004B2513 /* LaunchScreen.storyboard */,
 				5680B8D72D364170004B2513 /* Info.plist */,
 				5680B8D82D364170004B2513 /* main.m */,
+				5680B8F62D40E461004B2513 /* SVPrefixHeader.pch */,
 			);
 			path = SVPlayer;
 			sourceTree = "<group>";
@@ -110,6 +112,14 @@
 				5680B8F22D3650C9004B2513 /* VideoTableViewController.m */,
 			);
 			path = VideoTable;
+			sourceTree = "<group>";
+		};
+		5680B8F42D40D0DA004B2513 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5680B8D22D364170004B2513 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U69CD7R9A9;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SVPlayer/SVPrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SVPlayer/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
@@ -351,6 +362,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U69CD7R9A9;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SVPlayer/SVPrefixHeader.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SVPlayer/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";

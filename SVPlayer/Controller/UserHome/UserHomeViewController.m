@@ -13,10 +13,10 @@
 
 NSString *const USER_INFO_ID = @"UserInfoCell";
 
-@interface UserHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface UserHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @property(nonatomic, strong) UICollectionView *collectionView;
-
+@property(nonatomic, strong) UserInfoHeader *userInfoHeader;
 @end
 
 @implementation UserHomeViewController
@@ -59,6 +59,7 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && kind == UICollectionElementKindSectionHeader) {
         UserInfoHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:USER_INFO_ID forIndexPath:indexPath];
+        _userInfoHeader = header;
         return header;
     }
     return [UICollectionReusableView new];
@@ -83,6 +84,20 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     return CGSizeZero;
+}
+
+// ================================================================================================
+# pragma mark - UIScrollViewDelegate Delegate
+// ================================================================================================
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    CGFloat offsetY = scrollView.contentOffset.y;
+//    if (offsetY < 0) {
+//        [_userInfoHeader overScrollAction:offsetY];
+//    }else {
+//        [_userInfoHeader scrollToTopAction:offsetY];
+////        [self updateNavigationTitle:offsetY];
+//    }
 }
 
 @end

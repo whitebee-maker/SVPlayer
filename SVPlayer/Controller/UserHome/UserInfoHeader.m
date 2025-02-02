@@ -27,6 +27,9 @@
 @property(nonatomic, strong) UILabel *focusNumLabel;
 @property(nonatomic, strong) UILabel *thumbNumLabel;
 
+@property(nonatomic, strong) UIButton *focusBtn;
+@property(nonatomic, strong) UIButton *supportBtn;
+
 - (UILabel *)getSpliteLabel;
 
 @end
@@ -44,12 +47,13 @@
     [self initBackground];
     
     _containerView = [[UIView alloc] initWithFrame:self.bounds];
-//    _containerView.backgroundColor = [UIColor whiteColor];
+    //_containerView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_containerView];
 
     [self initAvatar];
     [self iniLefttInfoView];
     [self initRightInfoView];
+    [self initBtns];
 }
 
 - (void)initBackground {
@@ -79,7 +83,6 @@
     _avatarView.translatesAutoresizingMaskIntoConstraints = NO; // 取消自动布局约束
     [_containerView addSubview:_avatarView];
     
-    // 添加约束
     _avatarView.layer.cornerRadius = _avatarView.frame.size.width / 2;
     _avatarView.clipsToBounds = YES;
     [NSLayoutConstraint activateConstraints:@[
@@ -95,11 +98,11 @@
     _nickNameLabel = [[UILabel alloc] init];
     _nickNameLabel.text = @"用户昵称";
     _nickNameLabel.textColor = [UIColor whiteColor];
-    _nickNameLabel.font = SuperBigBoldFont;
+    _nickNameLabel.font = LargeBoldFont;
     _nickNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_containerView addSubview:_nickNameLabel];
     [NSLayoutConstraint activateConstraints:@[
-        [_nickNameLabel.topAnchor constraintEqualToAnchor:_avatarView.bottomAnchor constant:20],
+        [_nickNameLabel.topAnchor constraintEqualToAnchor:_avatarView.bottomAnchor constant:50],
         [_nickNameLabel.leadingAnchor constraintEqualToAnchor:_containerView.leadingAnchor constant:16],
         [_nickNameLabel.widthAnchor constraintEqualToConstant:150] // 设置宽度
     ]];
@@ -112,59 +115,126 @@
     _briefLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_containerView addSubview:_briefLabel];
     [NSLayoutConstraint activateConstraints:@[
-        [_briefLabel.topAnchor constraintEqualToAnchor:_nickNameLabel.bottomAnchor constant:5],
+        [_briefLabel.topAnchor constraintEqualToAnchor:_nickNameLabel.bottomAnchor constant:10],
         [_briefLabel.leadingAnchor constraintEqualToAnchor:_containerView.leadingAnchor constant:16],
         [_briefLabel.widthAnchor constraintEqualToConstant:(ScreenWidth - 20)]
     ]];
 }
-
-// ================================================================================================
-# pragma mark - Right Info
-// ================================================================================================
 
 - (void)initRightInfoView {
     //获赞
     _thumbNumLabel = [[UILabel alloc] init];
     _thumbNumLabel.text = @"1.0w";
     _thumbNumLabel.textColor = [UIColor whiteColor];
-    _thumbNumLabel.font = MediumFont;
+    _thumbNumLabel.font = SmallFont;
+    _thumbNumLabel.textAlignment = NSTextAlignmentCenter;
     _thumbNumLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_containerView addSubview:_thumbNumLabel];
     [NSLayoutConstraint activateConstraints:@[
         [_thumbNumLabel.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:5],
         [_thumbNumLabel.trailingAnchor constraintEqualToAnchor:_containerView.trailingAnchor constant:-16],
-        [_thumbNumLabel.widthAnchor constraintEqualToConstant:40]
+        [_thumbNumLabel.widthAnchor constraintEqualToConstant:55]
     ]];
     UILabel *thumbLabel = [[UILabel alloc] init];
     thumbLabel.text = @"获赞";
     thumbLabel.textColor = [UIColor grayColor];
     thumbLabel.font = MediumBoldFont;
+    thumbLabel.textAlignment = NSTextAlignmentCenter;
     thumbLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [_containerView addSubview:thumbLabel];
     [NSLayoutConstraint activateConstraints:@[
         [thumbLabel.topAnchor constraintEqualToAnchor:_thumbNumLabel.bottomAnchor constant:5],
         [thumbLabel.trailingAnchor constraintEqualToAnchor:_containerView.trailingAnchor constant:-16],
-        [thumbLabel.widthAnchor constraintEqualToConstant:40]
+        [thumbLabel.widthAnchor constraintEqualToConstant:55]
     ]];
-    //分割符
-    UILabel *splitLabel0 = [self getSpliteLabel];
+    UILabel *splitLabel0 = [self getSpliteLabel]; // 分割符
     [_containerView addSubview:splitLabel0];
     [NSLayoutConstraint activateConstraints:@[
         [splitLabel0.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:10],
         [splitLabel0.trailingAnchor constraintEqualToAnchor:_thumbNumLabel.leadingAnchor constant:-5],
         [splitLabel0.widthAnchor constraintEqualToConstant:10]
     ]];
+    
+    // 关注
+    _focusNumLabel = [[UILabel alloc] init];
+    _focusNumLabel.text = @"20";
+    _focusNumLabel.textColor = [UIColor whiteColor];
+    _focusNumLabel.font = SmallFont;
+    _focusNumLabel.textAlignment = NSTextAlignmentCenter;
+    _focusNumLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [_containerView addSubview:_focusNumLabel];
+    [NSLayoutConstraint activateConstraints:@[
+        [_focusNumLabel.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:5],
+        [_focusNumLabel.trailingAnchor constraintEqualToAnchor:splitLabel0.trailingAnchor constant:-16],
+        [_focusNumLabel.widthAnchor constraintEqualToConstant:55]
+    ]];
+    UILabel *focusLabel = [[UILabel alloc] init];
+    focusLabel.text = @"关注";
+    focusLabel.textColor = [UIColor grayColor];
+    focusLabel.font = MediumBoldFont;
+    focusLabel.textAlignment = NSTextAlignmentCenter;
+    focusLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [_containerView addSubview:focusLabel];
+    [NSLayoutConstraint activateConstraints:@[
+        [focusLabel.topAnchor constraintEqualToAnchor:_focusNumLabel.bottomAnchor constant:5],
+        [focusLabel.trailingAnchor constraintEqualToAnchor:splitLabel0.trailingAnchor constant:-16],
+        [focusLabel.widthAnchor constraintEqualToConstant:55]
+    ]];
+    UILabel *splitLabel1 = [self getSpliteLabel]; // 分割符
+    [_containerView addSubview:splitLabel1];
+    [NSLayoutConstraint activateConstraints:@[
+        [splitLabel1.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:10],
+        [splitLabel1.trailingAnchor constraintEqualToAnchor:_focusNumLabel.leadingAnchor constant:-5],
+        [splitLabel1.widthAnchor constraintEqualToConstant:10]
+    ]];
+    
+    // 粉丝
+    _fansNumLabel = [[UILabel alloc] init];
+    _fansNumLabel.text = @"200w";
+    _fansNumLabel.textColor = [UIColor whiteColor];
+    _fansNumLabel.font = SmallFont;
+    _fansNumLabel.textAlignment = NSTextAlignmentCenter;
+    _fansNumLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [_containerView addSubview:_fansNumLabel];
+    [NSLayoutConstraint activateConstraints:@[
+        [_fansNumLabel.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:5],
+        [_fansNumLabel.trailingAnchor constraintEqualToAnchor:splitLabel1.trailingAnchor constant:-16],
+        [_fansNumLabel.widthAnchor constraintEqualToConstant:55]
+    ]];
+    UILabel *fansLabel = [[UILabel alloc] init];
+    fansLabel.text = @"粉丝";
+    fansLabel.textColor = [UIColor grayColor];
+    fansLabel.font = MediumBoldFont;
+    fansLabel.textAlignment = NSTextAlignmentCenter;
+    fansLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [_containerView addSubview:fansLabel];
+    [NSLayoutConstraint activateConstraints:@[
+        [fansLabel.topAnchor constraintEqualToAnchor:_focusNumLabel.bottomAnchor constant:5],
+        [fansLabel.trailingAnchor constraintEqualToAnchor:splitLabel1.trailingAnchor constant:-16],
+        [fansLabel.widthAnchor constraintEqualToConstant:55]
+    ]];
+    UILabel *splitLabel2 = [self getSpliteLabel]; // 分割符
+    [_containerView addSubview:splitLabel2];
+    [NSLayoutConstraint activateConstraints:@[
+        [splitLabel2.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:10],
+        [splitLabel2.trailingAnchor constraintEqualToAnchor:_fansNumLabel.leadingAnchor constant:-5],
+        [splitLabel2.widthAnchor constraintEqualToConstant:10]
+    ]];
 }
-
-
 
 - (UILabel *)getSpliteLabel {
     UILabel *splitLabel = [[UILabel alloc] init];
     splitLabel.text = @"|";
     splitLabel.textColor = [UIColor grayColor];
     splitLabel.font = BigBoldFont;
+    splitLabel.textAlignment = NSTextAlignmentCenter;
     splitLabel.translatesAutoresizingMaskIntoConstraints = NO;
     return splitLabel;
+}
+
+- (void)initBtns {
+    // 关注按钮
+    // todo
 }
 
 // ================================================================================================

@@ -50,10 +50,11 @@
     //_containerView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_containerView];
 
-    [self initAvatar];
-    [self iniLefttInfoView];
-    [self initRightInfoView];
-    [self initBtns];
+    [self initAvatar];       // 头像
+    [self iniLefttInfoView];  // 昵称、简介
+    [self initRightInfoView]; // 关注、获赞、粉丝
+    [self initBtns];         // 关注和支持
+    [self initHeadTools];   //顶部工具按钮
 }
 
 - (void)initBackground {
@@ -109,7 +110,10 @@
     
     // 简介
     _briefLabel = [[UILabel alloc] init];
-    _briefLabel.text = @"个人简介。。。。。。。。。。。。。。。。。。。。。"; // todo:允许换行
+    _briefLabel.text = @"个人简介。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。";
+    _briefLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _briefLabel.numberOfLines = 0;
+    _briefLabel.preferredMaxLayoutWidth = ScreenWidth - 20;
     _briefLabel.textColor = [UIColor whiteColor];
     _briefLabel.font = SmallFont;
     _briefLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -133,7 +137,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [_thumbNumLabel.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:5],
         [_thumbNumLabel.trailingAnchor constraintEqualToAnchor:_containerView.trailingAnchor constant:-16],
-        [_thumbNumLabel.widthAnchor constraintEqualToConstant:55]
+        [_thumbNumLabel.widthAnchor constraintEqualToConstant:50]
     ]];
     UILabel *thumbLabel = [[UILabel alloc] init];
     thumbLabel.text = @"获赞";
@@ -145,7 +149,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [thumbLabel.topAnchor constraintEqualToAnchor:_thumbNumLabel.bottomAnchor constant:5],
         [thumbLabel.trailingAnchor constraintEqualToAnchor:_containerView.trailingAnchor constant:-16],
-        [thumbLabel.widthAnchor constraintEqualToConstant:55]
+        [thumbLabel.widthAnchor constraintEqualToConstant:50]
     ]];
     UILabel *splitLabel0 = [self getSpliteLabel]; // 分割符
     [_containerView addSubview:splitLabel0];
@@ -166,7 +170,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [_focusNumLabel.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:5],
         [_focusNumLabel.trailingAnchor constraintEqualToAnchor:splitLabel0.trailingAnchor constant:-16],
-        [_focusNumLabel.widthAnchor constraintEqualToConstant:55]
+        [_focusNumLabel.widthAnchor constraintEqualToConstant:50]
     ]];
     UILabel *focusLabel = [[UILabel alloc] init];
     focusLabel.text = @"关注";
@@ -178,7 +182,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [focusLabel.topAnchor constraintEqualToAnchor:_focusNumLabel.bottomAnchor constant:5],
         [focusLabel.trailingAnchor constraintEqualToAnchor:splitLabel0.trailingAnchor constant:-16],
-        [focusLabel.widthAnchor constraintEqualToConstant:55]
+        [focusLabel.widthAnchor constraintEqualToConstant:50]
     ]];
     UILabel *splitLabel1 = [self getSpliteLabel]; // 分割符
     [_containerView addSubview:splitLabel1];
@@ -199,7 +203,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [_fansNumLabel.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:5],
         [_fansNumLabel.trailingAnchor constraintEqualToAnchor:splitLabel1.trailingAnchor constant:-16],
-        [_fansNumLabel.widthAnchor constraintEqualToConstant:55]
+        [_fansNumLabel.widthAnchor constraintEqualToConstant:50]
     ]];
     UILabel *fansLabel = [[UILabel alloc] init];
     fansLabel.text = @"粉丝";
@@ -211,7 +215,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [fansLabel.topAnchor constraintEqualToAnchor:_focusNumLabel.bottomAnchor constant:5],
         [fansLabel.trailingAnchor constraintEqualToAnchor:splitLabel1.trailingAnchor constant:-16],
-        [fansLabel.widthAnchor constraintEqualToConstant:55]
+        [fansLabel.widthAnchor constraintEqualToConstant:50]
     ]];
     UILabel *splitLabel2 = [self getSpliteLabel]; // 分割符
     [_containerView addSubview:splitLabel2];
@@ -234,6 +238,38 @@
 
 - (void)initBtns {
     // 关注按钮
+    _focusBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _focusBtn.backgroundColor = [UIColor systemPinkColor];
+    [_focusBtn setTitle:@"+关注" forState:UIControlStateNormal];
+    [_focusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _focusBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    [_focusBtn addTarget:self action:@selector(onFocusBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_containerView addSubview:_focusBtn];
+    [NSLayoutConstraint activateConstraints:@[
+        [_focusBtn.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:50],
+        [_focusBtn.trailingAnchor constraintEqualToAnchor:_bottomBackground.trailingAnchor constant:-5],
+        [_focusBtn.widthAnchor constraintEqualToConstant:80]
+    ]];
+    
+    //支持按钮
+    _supportBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _supportBtn.backgroundColor = [UIColor clearColor];
+    _supportBtn.layer.borderWidth = 1.0;
+    _supportBtn.layer.borderColor = [UIColor systemPinkColor].CGColor;
+    [_supportBtn setTitle:@"支持" forState:UIControlStateNormal];
+    [_supportBtn setTitleColor:[UIColor systemPinkColor] forState:UIControlStateNormal];
+    _supportBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    [_supportBtn addTarget:self action:@selector(onSupportBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_containerView addSubview:_supportBtn];
+    [NSLayoutConstraint activateConstraints:@[
+        [_supportBtn.topAnchor constraintEqualToAnchor:_bottomBackground.topAnchor constant:50],
+        [_supportBtn.trailingAnchor constraintEqualToAnchor:_focusBtn.leadingAnchor constant:-5],
+        [_supportBtn.widthAnchor constraintEqualToConstant:80]
+    ]];
+}
+
+// headtools
+- (void)initHeadTools {
     // todo
 }
 
@@ -243,6 +279,21 @@
 
 // 头像点击事件
 - (void)onAvatarTapAction:(UITapGestureRecognizer *)sender {
+    // todo
+}
+
+// 关注按钮事件
+- (void)onFocusBtnClicked:(UIButton *)sender {
+    // todo
+}
+
+// 支持按钮事件
+- (void)onSupportBtnClicked:(UIButton *)sender {
+    // todo
+}
+
+// 分享点击事件
+- (void)onShareTapAction:(UITapGestureRecognizer *)sender {
     // todo
 }
 

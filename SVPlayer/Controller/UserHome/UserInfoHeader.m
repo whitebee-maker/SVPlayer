@@ -7,6 +7,8 @@
 
 #import "UserInfoHeader.h"
 
+#import "SlideTabBar.h"
+
 #define TOP_BACKGROUND_HEIGHT      120.0
 
 #define AVATAR_WITH                80.0
@@ -29,6 +31,8 @@
 
 @property(nonatomic, strong) UIButton *focusBtn;
 @property(nonatomic, strong) UIButton *supportBtn;
+
+@property(nonatomic, strong) SlideTabBar *slideTabBar;
 
 - (UILabel *)getSpliteLabel;
 
@@ -55,6 +59,7 @@
     [self initRightInfoView]; // 关注、获赞、粉丝
     [self initBtns];         // 关注和支持
     [self initHeadTools];   //顶部工具按钮
+    [self initFooter];
 }
 
 - (void)initBackground {
@@ -268,9 +273,21 @@
     ]];
 }
 
-// headtools
 - (void)initHeadTools {
     // todo
+}
+
+- (void)initFooter {
+    _slideTabBar = [SlideTabBar new];
+    _slideTabBar.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:_slideTabBar];
+    [NSLayoutConstraint activateConstraints:@[
+        [_slideTabBar.topAnchor constraintEqualToAnchor:self.bottomAnchor constant:-40],
+        [_slideTabBar.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:0],
+        [_slideTabBar.heightAnchor constraintEqualToConstant:40],
+        [_slideTabBar.widthAnchor constraintEqualToConstant:ScreenWidth]
+    ]];
+    [_slideTabBar setLabels:@[@"作品0",@"喜欢0"] tabIndex:0];
 }
 
 // ================================================================================================

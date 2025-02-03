@@ -16,6 +16,7 @@
 		5680B8F32D3650C9004B2513 /* VideoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5680B8F22D3650C9004B2513 /* VideoTableViewController.m */; };
 		AC3608882D3D429700CF2249 /* UserHomeCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3608872D3D429700CF2249 /* UserHomeCollectionLayout.m */; };
 		ACC1B2AE2D3D5DA400903D15 /* UserInfoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC1B2AD2D3D5DA400903D15 /* UserInfoHeader.m */; };
+		ACC1B2B12D51113200903D15 /* SlideTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC1B2B02D51113200903D15 /* SlideTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		AC3608872D3D429700CF2249 /* UserHomeCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHomeCollectionLayout.m; sourceTree = "<group>"; };
 		ACC1B2AC2D3D5DA400903D15 /* UserInfoHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoHeader.h; sourceTree = "<group>"; };
 		ACC1B2AD2D3D5DA400903D15 /* UserInfoHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoHeader.m; sourceTree = "<group>"; };
+		ACC1B2AF2D51113200903D15 /* SlideTabBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideTabBar.h; sourceTree = "<group>"; };
+		ACC1B2B02D51113200903D15 /* SlideTabBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlideTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				AC3608872D3D429700CF2249 /* UserHomeCollectionLayout.m */,
 				ACC1B2AC2D3D5DA400903D15 /* UserInfoHeader.h */,
 				ACC1B2AD2D3D5DA400903D15 /* UserInfoHeader.m */,
+				ACC1B2AF2D51113200903D15 /* SlideTabBar.h */,
+				ACC1B2B02D51113200903D15 /* SlideTabBar.m */,
 			);
 			path = UserHome;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				5680B8C82D36416E004B2513 /* AppDelegate.m in Sources */,
 				ACC1B2AE2D3D5DA400903D15 /* UserInfoHeader.m in Sources */,
 				AC3608882D3D429700CF2249 /* UserHomeCollectionLayout.m in Sources */,
+				ACC1B2B12D51113200903D15 /* SlideTabBar.m in Sources */,
 				5680B8EF2D364E91004B2513 /* UserHomeViewController.m in Sources */,
 				5680B8D92D364170004B2513 /* main.m in Sources */,
 			);

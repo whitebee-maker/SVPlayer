@@ -64,7 +64,8 @@
 
 - (void)initBackground {
     _topBackground = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, TOP_BACKGROUND_HEIGHT + SafeAreaTopHeight)];
-    _topBackground.backgroundColor = [UIColor greenColor];
+//    _topBackground.backgroundColor = [UIColor greenColor];
+    _topBackground.image = [UIImage imageNamed:@"default_background"];
     _topBackground.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:_topBackground];
     
@@ -312,6 +313,17 @@
 // 分享点击事件
 - (void)onShareTapAction:(UITapGestureRecognizer *)sender {
     // todo
+}
+
+// 滚动事件
+- (void)verticalScrollAction:(CGFloat) offsetY {
+    if (offsetY < 0 && offsetY > -50) {
+        CGFloat scaleRatio = fabs(offsetY)/370.0f;
+        CGFloat overScaleHeight = (370.0f * scaleRatio)/2;
+        _topBackground.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(scaleRatio + 1.0f, scaleRatio + 1.0f), CGAffineTransformMakeTranslation(0, -overScaleHeight));
+    } else {
+        
+    }
 }
 
 @end

@@ -91,13 +91,8 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 // ================================================================================================
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat offsetY = scrollView.contentOffset.y;
-//    if (offsetY < 0) {
-//        [_userInfoHeader overScrollAction:offsetY];
-//    }else {
-//        [_userInfoHeader scrollToTopAction:offsetY];
-////        [self updateNavigationTitle:offsetY];
-//    }
+    CGFloat offsetY = scrollView.contentOffset.y;
+    [_userInfoHeader verticalScrollAction: offsetY];
 }
 
 @end

@@ -1,0 +1,20 @@
+PODS:
+  - CocoaAsyncSocket (7.6.5)
+  - KTVHTTPCache (3.0.2):
+    - CocoaAsyncSocket
+
+DEPENDENCIES:
+  - KTVHTTPCache (~> 3.0.2)
+
+SPEC REPOS:
+  trunk:
+    - CocoaAsyncSocket
+    - KTVHTTPCache
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
+  KTVHTTPCache: 5711692cdf9a5ecfe829b1e16577deb3ffe3dc86
+
+PODFILE CHECKSUM: 0d704ab3c09a319be13a7ce037a50f6a27a70a0a
+
+COCOAPODS: 1.11.2

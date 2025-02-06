@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserInfoHeader : UICollectionReusableView
 
+- (void)verticalScrollAction:(CGFloat) offsetY;
+
 @end
 
 NS_ASSUME_NONNULL_END

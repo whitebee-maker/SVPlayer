@@ -57,6 +57,7 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    // header和footer的数据源在次处理
     if (indexPath.section == 0 && kind == UICollectionElementKindSectionHeader) {
         UserInfoHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:USER_INFO_ID forIndexPath:indexPath];
         _userInfoHeader = header;

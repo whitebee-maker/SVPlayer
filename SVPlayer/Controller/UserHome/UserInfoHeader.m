@@ -15,7 +15,7 @@
 #define AVATAR_HEIGHT              80.0
 #define AVATAR_Y                   (TOP_BACKGROUND_HEIGHT - (AVATAR_HEIGHT / 2))
 
-@interface UserInfoHeader()
+@interface UserInfoHeader() <SlideTabBarDelegate>
 
 @property(nonatomic, strong) UIView *containerView;
 @property(nonatomic, strong) UIImageView *topBackground;
@@ -54,12 +54,12 @@
     //_containerView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_containerView];
 
-    [self initAvatar];       // 头像
+    [self initAvatar];        // 头像
     [self iniLefttInfoView];  // 昵称、简介
     [self initRightInfoView]; // 关注、获赞、粉丝
-    [self initBtns];         // 关注和支持
-    [self initHeadTools];   //顶部工具按钮
-    [self initFooter];
+    [self initBtns];          // 关注和支持
+    [self initHeadTools];     // 顶部工具按钮
+    [self initFooter];        // slideTabBar
 }
 
 - (void)initBackground {
@@ -280,6 +280,7 @@
 
 - (void)initFooter {
     _slideTabBar = [SlideTabBar new];
+    _slideTabBar.delegate = self;
     _slideTabBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:_slideTabBar];
     [NSLayoutConstraint activateConstraints:@[
@@ -317,6 +318,7 @@
 
 // 滚动事件
 - (void)verticalScrollAction:(CGFloat) offsetY {
+    // 背景图片伸缩
     if (offsetY < 0 && offsetY > -50) {
         CGFloat scaleRatio = fabs(offsetY)/370.0f;
         CGFloat overScaleHeight = (370.0f * scaleRatio)/2;
@@ -324,6 +326,11 @@
     } else {
         
     }
+}
+
+// slideTabBar点击事件
+- (void)onSlideTabBarTapAction:(NSInteger)index {
+    
 }
 
 @end

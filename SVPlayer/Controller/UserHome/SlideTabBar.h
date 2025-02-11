@@ -9,7 +9,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SlideTabBarDelegate
+
+@optional
+- (void)onSlideTabBarTapAction:(NSInteger)index;
+
+@end
+
+
 @interface SlideTabBar : UIView
+
+@property(nonatomic, weak) id<SlideTabBarDelegate> delegate;
 
 - (void)setLabels:(NSArray<NSString *> *)titles tabIndex:(NSInteger)tabIndex;
 

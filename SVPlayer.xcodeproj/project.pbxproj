@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F84F2B163178C566E0BBA09 /* libPods-SVPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D8E6633CF2D1C592997153 /* libPods-SVPlayer.a */; };
+		3CD841CF2D5A1AE400A4DD69 /* LoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD841CE2D5A1AE400A4DD69 /* LoadMoreView.m */; };
 		5680B8C82D36416E004B2513 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5680B8C72D36416E004B2513 /* AppDelegate.m */; };
 		5680B8D32D364170004B2513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5680B8D22D364170004B2513 /* Assets.xcassets */; };
 		5680B8D62D364170004B2513 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5680B8D42D364170004B2513 /* LaunchScreen.storyboard */; };
@@ -24,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		11D8E6633CF2D1C592997153 /* libPods-SVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SVPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CD841CD2D5A1AE400A4DD69 /* LoadMoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMoreView.h; sourceTree = "<group>"; };
+		3CD841CE2D5A1AE400A4DD69 /* LoadMoreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadMoreView.m; sourceTree = "<group>"; };
 		4BEC7E7ED64F521AD3FD5BF5 /* Pods-SVPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVPlayer.release.xcconfig"; path = "Target Support Files/Pods-SVPlayer/Pods-SVPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		5680B8C32D36416E004B2513 /* SVPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5680B8C62D36416E004B2513 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -102,7 +105,6 @@
 		5680B8C52D36416E004B2513 /* SVPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				56BF23392D54B00D003097CC /* Network */,
 				56BF23322D549E39003097CC /* Entity */,
 				5680B8F42D40D0DA004B2513 /* Resource */,
 				5680B8DF2D36425C004B2513 /* Controller */,
@@ -138,6 +140,8 @@
 				ACC1B2AD2D3D5DA400903D15 /* UserInfoHeader.m */,
 				ACC1B2AF2D51113200903D15 /* SlideTabBar.h */,
 				ACC1B2B02D51113200903D15 /* SlideTabBar.m */,
+				3CD841CD2D5A1AE400A4DD69 /* LoadMoreView.h */,
+				3CD841CE2D5A1AE400A4DD69 /* LoadMoreView.m */,
 			);
 			path = UserHome;
 			sourceTree = "<group>";
@@ -168,13 +172,6 @@
 				56BF23372D54A57F003097CC /* User.m */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		56BF23392D54B00D003097CC /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +278,7 @@
 				AC3608882D3D429700CF2249 /* UserHomeCollectionLayout.m in Sources */,
 				ACC1B2B12D51113200903D15 /* SlideTabBar.m in Sources */,
 				5680B8EF2D364E91004B2513 /* UserHomeViewController.m in Sources */,
+				3CD841CF2D5A1AE400A4DD69 /* LoadMoreView.m in Sources */,
 				5680B8D92D364170004B2513 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

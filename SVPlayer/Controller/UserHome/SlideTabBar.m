@@ -9,7 +9,7 @@
 
 @interface SlideTabBar()
 
-@property (nonatomic, strong) UIView                    *slideLightView;
+@property (nonatomic, strong) UIView                    *slideLightView; // 黄色横条
 @property(nonatomic, strong) NSMutableArray<UILabel *>  *labels;
 @property(nonatomic, strong) NSMutableArray<NSString *> *titles;
 @property(nonatomic, assign) NSInteger                  tabIndex;
@@ -79,21 +79,23 @@
 
 - (void)onTapAction:(UITapGestureRecognizer *)sender {
     NSInteger index = sender.view.tag;
-    [UIView animateWithDuration:0.10
-                          delay:0
-         usingSpringWithDamping:0.8
-          initialSpringVelocity:0
-                        options:UIViewAnimationOptionCurveEaseInOut
-                     animations:^{
-                         CGRect frame = self.slideLightView.frame;
-                         frame.origin.x = self.itemWidth * index + 15;
-                         [self.slideLightView setFrame:frame];
-                         [self.labels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
-                             label.textColor = index == idx ? ColorWhite : ColorWhiteAlpha60;
-                         }];
-                     } completion:^(BOOL finished) {
-//                         [self.delegate onTabTapAction:index];
-                     }];
+    if (_delegate) {
+        [UIView animateWithDuration:0.10
+                              delay:0
+             usingSpringWithDamping:0.8
+              initialSpringVelocity:0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+            CGRect frame = self.slideLightView.frame;
+            frame.origin.x = self.itemWidth * index + 15;
+            [self.slideLightView setFrame:frame];
+            [self.labels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+                label.textColor = index == idx ? ColorWhite : ColorWhiteAlpha60;
+            }];
+        } completion:^(BOOL finished) {
+            [self.delegate onSlideTabBarTapAction:index];
+        }];
+    }
 }
 
 @end

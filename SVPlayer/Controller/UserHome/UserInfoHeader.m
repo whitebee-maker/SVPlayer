@@ -330,7 +330,9 @@
 
 // slideTabBar点击事件
 - (void)onSlideTabBarTapAction:(NSInteger)index {
-    
+    if (_delegate) {
+        [self.delegate onUserInfoHeaderActionTap:index];
+    }
 }
 
 @end

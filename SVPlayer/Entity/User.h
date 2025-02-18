@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) NSInteger      following_count;
 @property(nonatomic, assign) NSInteger      aweme_count;
 @property(nonatomic, assign) NSInteger      favourite_count;
-@property(nonatomic , copy) NSString        *avatar_uri;
+@property(nonatomic , copy) NSString        *avatar_url;
 
 
 @end

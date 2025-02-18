@@ -7,6 +7,8 @@
 
 #import "UserHomeViewController.h"
 
+#import "User.h"
+#import "UserRequest.h"
 #import "SlideTabBar.h"
 #import "LoadMoreView.h"
 #import "UserInfoHeader.h"
@@ -18,9 +20,18 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 
 @interface UserHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, UserInfoHeaderDelegate>
 
+@property(nonatomic, strong) User                  *user;
+@property(nonatomic, strong) NSString              *uid;
+
 @property(nonatomic, strong) UICollectionView      *collectionView;
 @property(nonatomic, strong) UserInfoHeader        *userInfoHeader;
 @property(nonatomic, strong) LoadMoreView          *loadMoreView;
+
+@property(nonatomic, assign) NSInteger             tabIndex;  // 0: 我的作品 | 1: 喜欢的作品
+@property(nonatomic, assign) CGFloat               itemWidth;
+@property(nonatomic, assign) CGFloat               itemHeight;
+@property(nonatomic, strong) NSMutableArray        *myVideos;
+@property(nonatomic, strong) NSMutableArray        *favoriteVideos;
 
 @end
 
@@ -32,6 +43,9 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 }
 
 - (void)initCollectionView {
+    _itemWidth = (ScreenWidth - (CGFloat)(((NSInteger)(ScreenWidth)) % 3) ) / 3.0f - 1.0f;
+    _itemHeight = _itemWidth * 1.35f;
+    
     UserHomeCollectionLayout *layout = [[UserHomeCollectionLayout alloc] init];
     layout.minimumLineSpacing = 1;        // 行间距
     layout.minimumInteritemSpacing = 0;   //列间距
@@ -57,6 +71,9 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (section == 1) {
+        return _tabIndex == 0 ? _myVideos.count : _favoriteVideos.count;
+    }
     return 0;
 }
 
@@ -110,8 +127,20 @@ NSString *const USER_INFO_ID = @"UserInfoCell";
 # pragma mark - Actions
 // ================================================================================================
 
-- (void)onUserInfoHeaderActionTap:(NSInteger)tag {
-    
+- (void)onUserInfoHeaderActionTap:(NSInteger)tabIndex {
+    _tabIndex = tabIndex;
+}
+
+
+// ================================================================================================
+# pragma mark - Init Data
+// ================================================================================================
+
+- (void)loadUserData {
+    __weak typeof (self) wself = self;
+    [UserRequest getUserDataByUid:_uid success:^(NSDictionary * _Nonnull responseData) {
+        
+    }];
 }
 
 @end

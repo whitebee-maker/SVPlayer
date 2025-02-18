@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F84F2B163178C566E0BBA09 /* libPods-SVPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D8E6633CF2D1C592997153 /* libPods-SVPlayer.a */; };
 		3CD841CF2D5A1AE400A4DD69 /* LoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD841CE2D5A1AE400A4DD69 /* LoadMoreView.m */; };
+		3CD841D32D6480F200A4DD69 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD841D22D6480F200A4DD69 /* NetworkManager.m */; };
+		3CD841DC2D64C34E00A4DD69 /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD841DB2D64C34E00A4DD69 /* UserRequest.m */; };
 		5680B8C82D36416E004B2513 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5680B8C72D36416E004B2513 /* AppDelegate.m */; };
 		5680B8D32D364170004B2513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5680B8D22D364170004B2513 /* Assets.xcassets */; };
 		5680B8D62D364170004B2513 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5680B8D42D364170004B2513 /* LaunchScreen.storyboard */; };
@@ -27,6 +29,10 @@
 		11D8E6633CF2D1C592997153 /* libPods-SVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SVPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CD841CD2D5A1AE400A4DD69 /* LoadMoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadMoreView.h; sourceTree = "<group>"; };
 		3CD841CE2D5A1AE400A4DD69 /* LoadMoreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadMoreView.m; sourceTree = "<group>"; };
+		3CD841D12D6480F200A4DD69 /* NetworkManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		3CD841D22D6480F200A4DD69 /* NetworkManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		3CD841DA2D64C34E00A4DD69 /* UserRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
+		3CD841DB2D64C34E00A4DD69 /* UserRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		4BEC7E7ED64F521AD3FD5BF5 /* Pods-SVPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVPlayer.release.xcconfig"; path = "Target Support Files/Pods-SVPlayer/Pods-SVPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		5680B8C32D36416E004B2513 /* SVPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5680B8C62D36416E004B2513 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +90,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3CD841D02D64809E00A4DD69 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3CD841D12D6480F200A4DD69 /* NetworkManager.h */,
+				3CD841D22D6480F200A4DD69 /* NetworkManager.m */,
+				3CD841DA2D64C34E00A4DD69 /* UserRequest.h */,
+				3CD841DB2D64C34E00A4DD69 /* UserRequest.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		5680B8BA2D36416E004B2513 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +122,7 @@
 		5680B8C52D36416E004B2513 /* SVPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				3CD841D02D64809E00A4DD69 /* Network */,
 				56BF23322D549E39003097CC /* Entity */,
 				5680B8F42D40D0DA004B2513 /* Resource */,
 				5680B8DF2D36425C004B2513 /* Controller */,
@@ -273,9 +291,11 @@
 				56BF23352D549E5B003097CC /* BaseModel.m in Sources */,
 				5680B8E82D364812004B2513 /* SVTabBarViewController.m in Sources */,
 				5680B8F32D3650C9004B2513 /* VideoTableViewController.m in Sources */,
+				3CD841D32D6480F200A4DD69 /* NetworkManager.m in Sources */,
 				5680B8C82D36416E004B2513 /* AppDelegate.m in Sources */,
 				ACC1B2AE2D3D5DA400903D15 /* UserInfoHeader.m in Sources */,
 				AC3608882D3D429700CF2249 /* UserHomeCollectionLayout.m in Sources */,
+				3CD841DC2D64C34E00A4DD69 /* UserRequest.m in Sources */,
 				ACC1B2B12D51113200903D15 /* SlideTabBar.m in Sources */,
 				5680B8EF2D364E91004B2513 /* UserHomeViewController.m in Sources */,
 				3CD841CF2D5A1AE400A4DD69 /* LoadMoreView.m in Sources */,
